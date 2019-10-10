@@ -10,3 +10,7 @@ blockchain = list(GENESIS_BLOCK)
 open_transactions = list()
 owner = 'Nutod'
 participants = {'Nutod'}
+
+
+def hash_block(block):
+  return '-'.join([str(block[key]) for key in block])
