@@ -11,6 +11,7 @@ open_transactions = list()
 owner = 'Nutod'
 participants = {'Nutod'}
 
-
+# Hash block function
+# TODO: Add this to an utils module
 def hash_block(block):
   return '-'.join([str(block[key]) for key in block])
