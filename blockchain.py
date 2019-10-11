@@ -26,10 +26,6 @@ def mine_block():
   }
   copied_transactions = open_transactions[:]
   copied_transactions.append(reward_transaction)
-  # hashed_block = str([last_block[key] for key in last_block])
-  # for key in last_block:
-  #   value = last_block[key]
-  #   hashed_block = hashed_block + str(value)
     
   block = {
     'previous_hash': hashed_block,
