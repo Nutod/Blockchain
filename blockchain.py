@@ -40,3 +40,25 @@ def get_transaction_value():
   tx_recipient = input('Enter the sender of the Transaction')
   tx_amount = float(input('Enter the amount:'))
   return tx_recipient, tx_amount
+
+def get_balances(participant):
+  # We are trying to get a list of amounts that are linked to the blockchain
+  tx_sender = [[tx['amount'] for tx in block['transactions'] if tx['sender'] == participant] for block in blockchain]
+  amount_sent = 0
+  for elem in tx_sender:
+    if len(elem) > 0:
+      amount_sent += elem[0]
+  tx_recipient = [[tx['amount'] for tx in block['transactions'] if tx['recipient'] == participant] for block in blockchain]
+  amount_received = 0
+  for elem in tx_recipient:
+    if len(elem) > 0:
+      amount_received += elem[0]
+  return amount_sent - amount_received
+
+def verify_chain():
+  for (index, block) in enumerate(blockchain):
+    if index == 0:
+      continue
+    if block['previous_hash'] != hash_block(blockchain[index - 1]):
+      return False
+  return True
