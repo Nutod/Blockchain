@@ -35,3 +35,8 @@ def mine_block():
 
   blockchain.append(block)
   return True
+
+def get_transaction_value():
+  tx_recipient = input('Enter the sender of the Transaction')
+  tx_amount = float(input('Enter the amount:'))
+  return tx_recipient, tx_amount
