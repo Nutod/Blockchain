@@ -41,6 +41,10 @@ def mine_block():
 #   tx_amount = float(input('Enter the amount:'))
 #   return tx_recipient, tx_amount
 
+def verify_transaction(transaction):
+  sender_balance = get_balances(transaction['sender'])
+  return sender_balance >= transaction['amount']
+
 def get_balances(participant):
   # We are trying to get a list of amounts that are linked to the blockchain
   tx_sender = [[tx['amount'] for tx in block['transactions'] if tx['sender'] == participant] for block in blockchain]
