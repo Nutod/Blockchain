@@ -11,6 +11,29 @@ open_transactions = list()
 owner = 'Nutod'
 participants = {'Nutod'}
 
+# Function that adds a new Transaction to the block
+def add_transaction(recipient, sender=owner, amount=1.0):
+  """
+    Appends a new transaction to the list of open transactions
+
+    Arguments:
+    :sender
+    :recipient
+    :amount
+  """
+  transaction = {
+    'sender': sender,
+    'recipient': recipient,
+    'amount': amount
+  }
+  if verify_transaction(transaction):
+    open_transactions.append(transaction)
+    participants.add(sender)
+    participants.add(recipient)
+    return True
+
+  return False
+
 # Hash block function
 # TODO: Add this to an utils module
 def hash_block(block):
