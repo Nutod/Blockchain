@@ -39,6 +39,7 @@ def add_transaction(recipient, sender=owner, amount=1.0):
 def hash_block(block):
   return '-'.join([str(block[key]) for key in block])
 
+#TODO: Possibly add docstrings here
 def mine_block():
   last_block = blockchain[-1]
   hashed_block = '-'.join([str(last_block[key]) for key in last_block])
